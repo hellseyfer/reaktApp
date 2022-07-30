@@ -10,7 +10,7 @@ const Card = ({prod}) => {
     <div className={style.info}>
         <h3>{prod.name}</h3>
         <h4>$ {prod.price}</h4>
-        <Link to={`details/${prod.id}`}>ver mas</Link>
+        <Link className={style.infoLabel} to={`details/${prod.id}`}>ver mas</Link>
     </div>
 </div>
   )

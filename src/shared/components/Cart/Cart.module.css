@@ -1,0 +1,8 @@
+.cartContainer{
+    border: 1px solid #000000;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px;
+}

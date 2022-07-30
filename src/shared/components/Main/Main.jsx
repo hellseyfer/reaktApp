@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import style from './Main.module.css';
-import Button from '../UI/Button';
-import Layout from '../UI/Layout';
-import Counter from '../UI/Counter';
 import CardContainer from '../Products/CardContainer';
 import DetailsContainer from '../Products/DetailsContainer';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import ParentForm from '../Forms/ParentForm';
+import Cart from '../Cart/Cart';
 
 const Main = ({ saludo }) => {
 
@@ -22,7 +20,7 @@ const Main = ({ saludo }) => {
                 <Route path="/" element={<CardContainer />} />
                 <Route path="/details/:id" element={<DetailsContainer />} />
                 <Route path="/form" element={<ParentForm/>} />
-                {/* <Route path="/cart" element={<Cart />} /> */}
+                <Route path="/cart" element={<Cart />} /> 
         </Routes>
     </main>
   )

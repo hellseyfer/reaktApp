@@ -1,4 +1,6 @@
 .container {
     background-color: darkolivegreen;
     min-height: 8rem;
+    color: azure;
+    margin: auto;
 }

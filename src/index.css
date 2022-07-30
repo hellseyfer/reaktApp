@@ -20,24 +20,35 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h1 {
-  padding: 10px 10px;
+  padding: 10px 0px;
   color: #c39367;
   text-shadow: 3px 3px 1px #000000c2;
-  font-size: 3.2em;
+  font-size: 4em;
 }
 
 h2 {
-  padding: 10px 40px;
-  font-size: 2em;
+  padding: 10px 0px;
+  font-size: 2.5em;
 }
 
 h3 {
-  padding: 10px 70px;
-  font-size: 1.5em;
+  padding: 10px 0px;
+  font-size: 2.1em;
+}
+
+h4{
+  padding: 10px 0px;
+  font-size: 1.7em;
 }
 
 h5{
-  font-size: 1.4em;
+  padding: 10px 0px;
+  font-size: 1.3em;
+}
+
+h6{
+  padding: 10px 0px;
+  font-size: 1em;
 }
 
 p, li {

@@ -1,7 +1,6 @@
 .card {
-    box-shadow: 0px 0px 10px 1px rgba(10, 148, 234, 0.497);
+    border: 1px solid #000000;
     margin: 15px;
-    width: 30%;
     display: flex;
     transition: all 0.2s ease-in-out;
 }
@@ -25,8 +24,6 @@
     font-size: 17px;
     font-style: italic;
     margin-bottom: 7px;
-    color: rgb(37, 176, 235);
-    background-color: rgba(9, 9, 9, 0.899);
     padding: 4px;
     border-radius: 5px;
 }
@@ -34,4 +31,9 @@
 .card .info h4 {
     font-size: 16px;
     font-weight: 300;
+}
+
+.infoLabel{
+    font-style: italic;
+    text-decoration: underline;
 }

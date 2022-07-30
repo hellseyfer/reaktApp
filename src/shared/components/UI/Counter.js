@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import Button from './Button';
 import style from './UI.module.css';
 
-const Counter = ({initial, stock}) => {
+
+
+const Counter = ({initial, stock, onSubmit}) => {
     const [counter, setCounter] = useState(initial);
 
     const handleSum = () => {
@@ -20,7 +22,8 @@ const Counter = ({initial, stock}) => {
             <h2>{counter}</h2>
             <Button text='+' click={handleSum} variant={style.btnStyle}></Button>
         </div>
-        <Button text='Añadir al carro' click={handleSubmit}  variant={style.btnStyle}></Button>
+        <Button text='Añadir al carro' click={() => counter > 0 ? onSubmit(counter) : alert('debe especificar cartidad')}></Button>
+
         </>
         
     )

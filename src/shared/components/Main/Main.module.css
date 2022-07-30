@@ -1,0 +1,12 @@
+.container {
+    background-color: white;
+    min-height: calc(100vh - 12rem);
+}
+
+.btnStyle{
+    background-color: paleturquoise;
+}
+
+.title{
+    padding: 0 1rem 0 2rem;
+}

@@ -1,0 +1,11 @@
+.btnStyle{
+    background-color: paleturquoise;
+}
+
+.wrapRows{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 10rem;
+}

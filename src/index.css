@@ -1,8 +1,11 @@
+html{
+  font-size: 14px; /* px means "pixels": the base font size is now 10 pixels high  */
+  font-family: serif; /* this should be the rest of the output you got from Google fonts */
+  background-color: white;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  margin: 0 auto; /* first value = top && bottom, second = left && right */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +13,41 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;  /* because browsers set a value for this */
+}
+
+h1 {
+  padding: 10px 10px;
+  color: #c39367;
+  text-shadow: 3px 3px 1px #000000c2;
+  font-size: 3.2em;
+}
+
+h2 {
+  padding: 10px 40px;
+  font-size: 2em;
+}
+
+h3 {
+  padding: 10px 70px;
+  font-size: 1.5em;
+}
+
+h5{
+  font-size: 1.4em;
+}
+
+p, li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 20px;
 }

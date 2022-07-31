@@ -23,12 +23,21 @@ export const CartContextProvider = ({children}) => {
         } else {
             setCart(cart => cart.map(item => item.id === p.id ? {...item, qty: item.qty + qty} : item))
         }
+    }
 
+    const patchCart = (p, qty) => {
+        //Actualizar el carrito
+        console.log('Actualizando el carrito', p);
+        if(qty === 0) {
+            setCart(cart => cart.filter(item => item.id !== p.id));
+        } else {
+            setCart(cart => cart.map(item => item.id === p.id ? {...item, qty} : item))
+        }
     }
     
         return(
             //Los children serían los componentes que están envueltos en app por mi contexto
-            <CartContext.Provider value={{cart, addToCart, totalItems}}>
+            <CartContext.Provider value={{cart, addToCart, patchCart, totalItems}}>
                 {children}
             </CartContext.Provider>
         )

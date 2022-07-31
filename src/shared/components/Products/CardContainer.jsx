@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import CardList from './CardList';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CategoryContainer from './CategoryContainer';
+import SearchBar from './SearchBar';
 
 const CardContainer = () => {
-  const [items, setItems] = useState([]);
+  const itemsInitState = {
+    items: [],
+    backupItems: [],
+  };
+
+  const [list, setList] = useReducer(
+    (items, backupItems) => ({...items, ...backupItems}), itemsInitState
+  );
   const [loading, setLoading] = useState(true);
   //const  param = useParams();
   const { state } = useLocation();
 
   useEffect(() => {
-    console.log(state);
     fetch(state?.category ? `https://fake-products-eric.herokuapp.com/api/products/category/${state.category}` : 'https://fake-products-eric.herokuapp.com/api/products')
       .then((res) => {
         const p = res.json();
         p.then((d) => {
           
-          setItems(d);
-          console.log(d); //si esto devolviera otra promesa debería seguir haciendo callbacks
+          setList({items:d, backupItems:d});
           setLoading(false);
         }).catch(() => {
           console.log('Error');
@@ -29,7 +35,16 @@ const CardContainer = () => {
         console.log('Error');
         setLoading(false);
       });
-  },[state]);
+  },[state?.category]);
+
+
+  const handleSearch = (e) => {
+    if(e.target.value.length > 0) {
+        setList({items: list.items.filter(d => d.name.toLowerCase().includes(e.target.value.toLowerCase())), backupItems: list.backupItems});
+    } else {
+        setList({items: list.backupItems, backupItemd: list.backupItems});
+    }
+  };
 
   return (
     loading 
@@ -43,8 +58,9 @@ const CardContainer = () => {
         }}
       >
         <CategoryContainer></CategoryContainer>
+        <SearchBar handleSearch={handleSearch}></SearchBar>
         <h2>Artículos</h2>
-        <CardList data={items} />
+        <CardList data={list.items} />
       </div>
   
   );

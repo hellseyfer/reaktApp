@@ -1,16 +1,15 @@
 import React from 'react'
 //importo el hook
 import {useContext} from 'react'
-import { CartContext } from './CartContext'
 //importo el contexto
 import style from './Cart.module.css';
 import Counter from '../UI/Counter';
+import { CartContext } from '../../../context/CartContext';
 
 const Cart = () => {
     const { cart, patchCart } = useContext(CartContext);
 
     const onSubmit = (c, p) => {
-      console.log('submit');
       patchCart(p, c);
     }
 

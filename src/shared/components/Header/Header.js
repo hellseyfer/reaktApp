@@ -3,8 +3,7 @@ import style from './Header.module.css';
 import logo from '../../../assets/logo192.png';
 import {Link} from 'react-router-dom';
 import { useContext } from 'react';
-import { CartContext } from '../Cart/CartContext';
-
+import { CartContext } from '../../../context/CartContext';
 const Header = () => {
     const { totalItems } = useContext(CartContext);
 

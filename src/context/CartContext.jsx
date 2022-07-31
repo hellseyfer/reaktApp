@@ -27,7 +27,6 @@ export const CartContextProvider = ({children}) => {
 
     const patchCart = (p, qty) => {
         //Actualizar el carrito
-        console.log('Actualizando el carrito', p);
         if(qty === 0) {
             setCart(cart => cart.filter(item => item.id !== p.id));
         } else {

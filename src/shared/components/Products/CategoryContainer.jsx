@@ -1,23 +1,16 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './Category.module.css'
 
 const CategoryContainer = () => {
-    const navigate =  useNavigate();
 
-    const handleCategory = (e) => {
-        console.log(e);
-        navigate('/', {
-            state: { category: e },
-          });
-    }
   return (
     <div className={style.categorias}>
-        <span className={style.categoria} onClick={() => handleCategory('')}>Todos</span>
-        <span className={style.categoria} onClick={() => handleCategory('camisas')}>Camisas</span>
-        <span className={style.categoria} onClick={() => handleCategory('billeteras')}>Billeteras</span>
-        <span className={style.categoria} onClick={() => handleCategory('remeras')}>Remeras</span>
-        <span className={style.categoria} onClick={() => handleCategory('gorras')}>Gorras</span>
+        <Link className={style.categoria} to={`/category/todos`}>Todos</Link>
+        <Link className={style.categoria} to={`/category/camisas`}>Camisas</Link>
+        <Link className={style.categoria} to={`/category/billeteras`}>Billeteras</Link>
+        <Link className={style.categoria} to={`/category/remeras`}>Remeras</Link>
+        <Link className={style.categoria} to={`/category/gorras`}>Gorras</Link>
     </div>
   )
 }

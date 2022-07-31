@@ -17,7 +17,6 @@ const ParentForm = () => {
 
   return (
     <div>
-        <h1>Welcome</h1>
         <h2>To my Form</h2>
         <h3>{dataForm?.nombre ? 'Thanks Sr. ' + dataForm?.nombre : 'Provide credentials:'}</h3>
         <Form onSubmit={onSubmit}/>

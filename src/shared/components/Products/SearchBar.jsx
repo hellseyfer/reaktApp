@@ -1,15 +1,14 @@
 import React from 'react'
 
-const SearchBar = ({handleSearch}) => {
+const SearchBar = ({search}) => {
 
-    const search = (e) => {
-        console.log(e.target.value);
-        handleSearch(e);
+    const handleSearch = (e) => {
+        search(e);
     };
 
   return (
     <>
-        <input type="text" placeholder="Buscar" onChange={search}/>
+        <input type="text" placeholder="Buscar" onChange={handleSearch} name='busqueda'/>
     </>
   )
 }

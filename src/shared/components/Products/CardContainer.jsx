@@ -1,53 +1,34 @@
 import React, { useEffect, useReducer } from 'react';
 import CardList from './CardList';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import CategoryContainer from './CategoryContainer';
-import SearchBar from './SearchBar';
 
 const CardContainer = () => {
   const itemsInitState = {
     items: [],
     backupItems: [],
+    loading: true,
   };
 
-  const [list, setList] = useReducer(
-    (items, backupItems) => ({...items, ...backupItems}), itemsInitState
-  );
-  const [loading, setLoading] = useState(true);
-  //const  param = useParams();
-  const { state } = useLocation();
+  const [list, setList] = useReducer((items, backupItems, loading) => ({...items, ...backupItems, ...loading}), itemsInitState);
+  const  param = useParams();
+  //const { state } = useLocation();
 
   useEffect(() => {
-    fetch(state?.category ? `https://fake-products-eric.herokuapp.com/api/products/category/${state.category}` : 'https://fake-products-eric.herokuapp.com/api/products')
-      .then((res) => {
-        const p = res.json();
-        p.then((d) => {
-          
-          setList({items:d, backupItems:d});
-          setLoading(false);
+    const peticion = param?.category !== 'todos' ? `https://fake-products-eric.herokuapp.com/api/products/category/${param.category}` 
+      : 'https://fake-products-eric.herokuapp.com/api/products';
+
+    fetch(peticion)
+      .then((res) => res.json())
+      .then((d) => {
+          setList({items:d, backupItems:d, loading:false});
         }).catch(() => {
-          console.log('Error');
-          setLoading(false);
+          setList({loading:false});
         });
-      })
-      .catch(() => {
-        console.log('Error');
-        setLoading(false);
-      });
-  },[state?.category]);
-
-
-  const handleSearch = (e) => {
-    if(e.target.value.length > 0) {
-        setList({items: list.items.filter(d => d.name.toLowerCase().includes(e.target.value.toLowerCase())), backupItems: list.backupItems});
-    } else {
-        setList({items: list.backupItems, backupItemd: list.backupItems});
-    }
-  };
+  },[param?.category]);
 
   return (
-    loading 
+    list.loading 
       ? <h5>Cargando...</h5>
       : <div
         style={{
@@ -58,9 +39,8 @@ const CardContainer = () => {
         }}
       >
         <CategoryContainer></CategoryContainer>
-        <SearchBar handleSearch={handleSearch}></SearchBar>
         <h2>Artículos</h2>
-        <CardList data={list.items} />
+        { <CardList items={list.items} backup={list.backupItems} setterList={setList}/> }
       </div>
   
   );

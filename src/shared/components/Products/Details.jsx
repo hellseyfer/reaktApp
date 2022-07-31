@@ -2,7 +2,7 @@ import React from 'react'
 import Counter from '../UI/Counter'
 
 import {useContext} from 'react'
-import { CartContext } from '../Cart/CartContext';
+import { CartContext } from '../../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
 const Details = ({p}) => {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import style from './Main.module.css';
 import CardContainer from '../Products/CardContainer';
 import DetailsContainer from '../Products/DetailsContainer';
@@ -17,7 +17,8 @@ const Main = ({ saludo }) => {
 
         </Layout> */}
         <Routes>
-                <Route path="/" element={<CardContainer />} />
+            <Route path="/" element={<CardContainer/>} />
+                <Route path="/:category" element={<CardContainer />} />
                 <Route path="/details/:id" element={<DetailsContainer />} />
                 <Route path="/form" element={<ParentForm/>} />
                 <Route path="/cart" element={<Cart />} /> 

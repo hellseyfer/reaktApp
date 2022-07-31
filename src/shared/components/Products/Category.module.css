@@ -1,0 +1,15 @@
+.categorias{
+    display: flex;
+    flex-flow: row;
+}
+
+.categoria{
+    border: 1px solid #000000;
+    margin: 9px;
+    padding: 5px;
+    cursor: pointer;
+}
+.categoria:hover{
+    background-color: #000000;
+    color: #ffffff;
+}

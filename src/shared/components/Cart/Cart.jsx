@@ -15,7 +15,6 @@ const Cart = () => {
     }
 
     const handleTotalItem = (p) => {
-      debugger
       return p.price * p.qty;
     }
 
@@ -27,11 +26,11 @@ const Cart = () => {
             <div className={style.cartGrid} key={p.id} >
                 <img src={p.img} alt="cover" style={{maxWidth: '10rem'}}/>
                 <h4>{p.name}</h4>
-                <div>
+                <div style={{margin:'auto'}}>
                 <span>Precio: <span style={{fontWeight:'bold'}}>${p.price}</span></span>
                 <p>Total: <span style={{fontWeight:'bold'}}>${handleTotalItem(p)}</span></p>
                 </div>
-                <div>
+                <div style={{margin:'10px'}}>
                   <p>Cantidad: {p.qty}</p>
                   <Counter initial={p.qty} product={p} onSubmit={onSubmit} submitText='Actualizar cantidad'></Counter>
                 </div>

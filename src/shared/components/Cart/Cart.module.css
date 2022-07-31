@@ -14,5 +14,9 @@
     margin: 15px;
     border: 1px solid #000000;
     align-items: center;
-
 }
+
+@media (max-width: 1200px) {
+    .cartGrid { grid-template-columns: repeat(2, 1fr); 
+    margin: auto;}
+  }

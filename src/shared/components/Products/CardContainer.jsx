@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
 import CardList from './CardList';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import CategoryContainer from './CategoryContainer';
 
 const CardContainer = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  //const  param = useParams();
+  const { state } = useLocation();
 
   useEffect(() => {
-    fetch('https://fake-products-eric.herokuapp.com/api/products')
+    console.log(state);
+    fetch(state?.category ? `https://fake-products-eric.herokuapp.com/api/products/category/${state.category}` : 'https://fake-products-eric.herokuapp.com/api/products')
       .then((res) => {
         const p = res.json();
         p.then((d) => {
@@ -24,7 +29,7 @@ const CardContainer = () => {
         console.log('Error');
         setLoading(false);
       });
-  },[]);
+  },[state]);
 
   return (
     loading 
@@ -37,6 +42,7 @@ const CardContainer = () => {
           alignItems: 'center',
         }}
       >
+        <CategoryContainer></CategoryContainer>
         <h2>Artículos</h2>
         <CardList data={items} />
       </div>

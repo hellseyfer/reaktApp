@@ -36,9 +36,8 @@ const Cart = () => {
                 </div>
             </div>
         )}
-        <div>
-          <h3 style={{float:'right'}}>Total: ${cart.reduce((acc, cur) => acc + handleTotalItem(cur), 0)}</h3>
-        </div>
+          <h3 style={{textAlign: 'end'}}>Total: ${cart.reduce((acc, cur) => acc + handleTotalItem(cur), 0)}</h3>
+
 </> : <h3>No hay productos en el carrito</h3>}
     </div>
   )

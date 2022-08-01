@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../../context/CartContext';
 const Header = () => {
-    const { totalItems } = useContext(CartContext);
+    const { tItems } = useContext(CartContext);
 
     return (
         <header >
@@ -16,7 +16,7 @@ const Header = () => {
                     <li style={{ backgroundColor: 'blue' }}>About</li>
                 </ul> */}
                 <Link style={{ fontSize: '1.2em', margin: '0 0.5rem'}} to="/form">Form</Link>
-                <Link style={{ fontSize: '1.2em', margin: '0 0.5rem'}} to="/cart">Cart ({totalItems})</Link>
+                <Link style={{ fontSize: '1.2em', margin: '0 0.5rem'}} to="/cart">Cart ({tItems})</Link>
 
                  <img style={{ maxWidth: '3.3rem'}} src={logo} alt='logo'/>
             </nav>

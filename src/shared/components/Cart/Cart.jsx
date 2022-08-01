@@ -1,44 +1,36 @@
 import React from 'react'
-//importo el hook
-import {useContext} from 'react'
-//importo el contexto
 import style from './Cart.module.css';
 import Counter from '../UI/Counter';
+import {useContext} from 'react'
 import { CartContext } from '../../../context/CartContext';
+//importo el contexto
 
-const Cart = () => {
-    const { cart, patchCart } = useContext(CartContext);
+const Cart = ({product}) => {
+    const { patchCart } = useContext(CartContext);
 
-    const onSubmit = (c, p) => {
-      patchCart(p, c);
-    }
+      const onSubmit = (c, p) => {
+        patchCart(p, c);
+      }
 
-    const handleTotalItem = (p) => {
-      return p.price * p.qty;
-    }
-
+      const handleTotalItem = (p) => {
+        return p.qty * p.price;
+      }
+  
   return (
-    <div className='container'>
-        <h2 style={{margin:'auto'}}>Cart</h2>
-        {cart.length > 0 ? 
-        <>{cart.map(p => 
-            <div className={style.cartGrid} key={p.id} >
-                <img src={p.img} alt="cover" style={{maxWidth: '10rem'}}/>
-                <h4>{p.name}</h4>
+    <>
+    <div className={style.cartGrid} key={product.id} >
+                <img src={product.img} alt="cover" style={{maxWidth: '10rem'}}/>
+                <h4>{product.name}</h4>
                 <div style={{margin:'auto'}}>
-                <span>Precio: <span style={{fontWeight:'bold'}}>${p.price}</span></span>
-                <p>Total: <span style={{fontWeight:'bold'}}>${handleTotalItem(p)}</span></p>
+                <span>Precio: <span style={{fontWeight:'bold'}}>${product.price}</span></span>
+                <p>Total: <span style={{fontWeight:'bold'}}>${handleTotalItem(product)}</span></p>
                 </div>
                 <div style={{margin:'10px'}}>
-                  <p>Cantidad: {p.qty}</p>
-                  <Counter initial={p.qty} product={p} onSubmit={onSubmit} submitText='Actualizar cantidad'></Counter>
+                  <p>Cantidad: {product.qty}</p>
+                  <Counter initial={product.qty} product={product} onSubmit={onSubmit} submitText='Actualizar cantidad'></Counter>
                 </div>
             </div>
-        )}
-          <h3 style={{textAlign: 'end'}}>Total: ${cart.reduce((acc, cur) => acc + handleTotalItem(cur), 0)}</h3>
-
-</> : <h3>No hay productos en el carrito</h3>}
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import CardContainer from '../Products/CardContainer';
 import DetailsContainer from '../Products/DetailsContainer';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ParentForm from '../Forms/ParentForm';
-import Cart from '../Cart/Cart';
+import CartList from '../Cart/CartList';
 
 const Main = ({ saludo }) => {
 
@@ -22,7 +22,7 @@ const Main = ({ saludo }) => {
                 <Route path="/category/:category" element={<CardContainer />} />
                 <Route path="/details/:id" element={<DetailsContainer />} />
                 <Route path="/form" element={<ParentForm/>} />
-                <Route path="/cart" element={<Cart />} /> 
+                <Route path="/cart" element={<CartList />} /> 
                 <Route path="*" element={<Navigate to="/category/todos" replace />} />
         </Routes>
     </main>

@@ -1,29 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../../context/CartContext';
+import useCounter from '../../../hooks/useCounter';
 import Button from './Button';
 import style from './UI.module.css';
 
 const Counter = ({initial, onSubmit, product, submitText}) => {
-    const [counter, setCounter] = useState(initial);
+    const { cart } = useContext(CartContext);
+    const { count, handleSum, handleSub } = useCounter(initial, product.stock);
 
-    const handleSum = () => {
-      if(counter < product.stock) setCounter(counter + 1);
-    }
-
-    const handleSub = () => {
-      if(counter > 0) setCounter(counter - 1);
-    }
+    const isInCart = (p) => {
+      return cart.some((item) => item.id === p.id);
+  }
 
     return (
-      <>
-        <div className={style.wrapRows}>
-            <Button text='-' click={handleSub} variant={style.btnStyle}></Button>
-            <h2>{counter}</h2>
-            <Button text='+' click={handleSum} variant={style.btnStyle}></Button>
-        </div>
-        <Button text={submitText} click={() => onSubmit(counter, product)}></Button>
+      isInCart(product) && submitText !== 'Actualizar cantidad'?  
+      <span> "ya se encuentra en el carrito"</span>
+      :  <>
+      <div className={style.wrapRows}>
+          <Button text='-' click={handleSub} variant={style.btnStyle}></Button>
+          <h2>{count}</h2>
+          <Button text='+' click={handleSum} variant={style.btnStyle}></Button>
+      </div>
+      <Button text={submitText} click={() => onSubmit(count, product)}></Button>
 
-        </>
-        
+    </>
     )
 }
 

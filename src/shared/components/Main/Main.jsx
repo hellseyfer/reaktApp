@@ -11,12 +11,6 @@ const Main = ({ saludo }) => {
   return (
     <main className={style.container}>
        <h1 className={style.title}>{saludo}</h1>
-        {/* <Layout>
-            <h1 className={style.title}>{saludo}</h1>
-            <CardContainer/>
-             <Counter value={counter}/>
-
-        </Layout> */}
         <Routes>
             {/* <Route path="/" element={<CardContainer/>} /> */}
                 <Route path="/category/:category" element={<CardContainer />} />

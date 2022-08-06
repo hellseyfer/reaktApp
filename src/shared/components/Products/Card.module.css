@@ -18,6 +18,8 @@
 .card .info {
     padding: 10px;
     border-left: 5px solid rgba(204, 204, 204, 0.278);
+    flex-flow: column;
+    display: flex;
 }
 
 .card .info h3 {
@@ -36,4 +38,5 @@
 .infoLabel{
     font-style: italic;
     text-decoration: underline;
+    cursor: pointer;
 }

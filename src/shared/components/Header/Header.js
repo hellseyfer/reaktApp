@@ -12,9 +12,6 @@ const Header = () => {
             <nav className={style.navbar}>
                 <Link style={{ fontSize: '2em'}} to="/">My App</Link>
                 <div className={style.center}/>
-                {/* <ul>
-                    <li style={{ backgroundColor: 'blue' }}>About</li>
-                </ul> */}
                 <Link style={{ fontSize: '1.2em', margin: '0 0.5rem'}} to="/form">Form</Link>
                 <Link style={{ fontSize: '1.2em', margin: '0 0.5rem'}} to="/cart">Cart ({tItems})</Link>
 

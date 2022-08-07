@@ -1,26 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Form = ({onSubmit}) => {
-    const initState = {
-      nombre:'',
-      email:'',
-    }
-    const [form, setForm] = useState(initState);
+const Form = ({order, handleChange, form}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        onSubmit(e); // send data to parent
+        order(e); // send data to parent
     };
-
-    const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value});
-    }
 
   return (
     <form onSubmit={handleSubmit}>
-        <input type="text" name='nombre' onChange={handleChange} placeholder='ingresa tu nombre' value={form.nombre}/>
-        <input type="email" name='email' onChange={handleChange} placeholder='ingresa tu email' value={form.email}/>
+        <input type="text" name='nombre' onChange={handleChange} placeholder='nombre' value={form.nombre}/>
+        <input type="number" name='phone' onChange={handleChange} placeholder='telefono' value={form.phone}/>
         <button>Enviar</button>
     </form>
   )

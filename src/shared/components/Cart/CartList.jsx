@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 
 
 import { CartContext } from '../../../context/CartContext';
+import Checkout from '../Checkout/Checkout';
 import Cart from './Cart';
 
 const CartList = () => {
@@ -15,8 +16,11 @@ const CartList = () => {
             <Cart product={p} key={p.id}></Cart>
         )}
 
-      <h3 style={{textAlign: 'end'}}>Total: ${tPrice}</h3>
-
+      <div style={{textAlign: 'end'}}>
+      <h3>Total: ${tPrice}</h3>
+      <Checkout></Checkout>
+      </div>
+      
 </> : <h3>No hay productos en el carrito</h3>}
     </div>
   )

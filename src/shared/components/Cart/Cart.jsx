@@ -29,7 +29,7 @@ const Cart = ({product}) => {
                   <p>Cantidad: {product.qty}</p>
                   <Counter initial={product.qty} product={product} onSubmit={onSubmit} submitText='Actualizar cantidad'></Counter>
                 </div>
-            </div>
+    </div>
     </>
   )
 }

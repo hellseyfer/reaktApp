@@ -1,25 +1,30 @@
-import React from 'react'
+import {React, useState } from 'react'
 import Form from './Form';
 
-const ParentForm = () => {
-    const [dataForm, setDataForm] = React.useState({
-        nombre: '',
-        email: '',
-    });
+const ParentForm = ({onConfirm}) => {
 
-    const onSubmit = (e) => {
+    const initState = {
+        nombre:'',
+        phone:'',
+      }
+
+    const [dataForm, setDataForm] = useState(initState);
+
+    const order = () => {
         console.log('submit');
-        setDataForm({
-            nombre: e.target.nombre.value,
-            email: e.target.email.value,
-        });
+        onConfirm(dataForm);
+    }
+
+    const handleChange = (e) => {
+        setDataForm({...dataForm, [e.target.name]: e.target.value});
     }
 
   return (
     <div>
-        <h2>To my Form</h2>
-        <h3>{dataForm?.nombre ? 'Thanks Sr. ' + dataForm?.nombre : 'Provide credentials:'}</h3>
-        <Form onSubmit={onSubmit}/>
+        <h2>Confirm Order</h2>
+        {/* <h3>{dataForm?.nombre ? 'Thanks Sr. ' + dataForm?.nombre : 'Provide credentials:'}</h3> */}
+        <Form order={order} handleChange={handleChange} form={dataForm}/>
+
     </div>
   )
 }

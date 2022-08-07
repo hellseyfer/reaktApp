@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 const useCounter = (initial, stock) => {
   const [count, setCount] = useState(initial);
-  console.log(count);
-
 
   const handleSum = () => {
     if (count < stock) setCount(count + 1);

@@ -82,3 +82,13 @@ span{
 .container{
   margin: 15px;
 }
+
+.btn-primary{
+  background-color: #000000;
+  border-color: rgb(26, 82, 0);
+  color: white;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  margin: 5px;
+}
